@@ -12,10 +12,10 @@ const Navbar = () => {
           <Link className="navbar-brand fs-1 fw-bolder" to="/" >ironMenu</Link>
          <div className="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
             <ul className="navbar-nav nav-pills">
-              <li className="nav-item">
+              <li className="nav-item pe-3">
                 <Button classButton="" href="/login" text="iniciar Sesión"/>
               </li>
-              <li className="nav-item">
+              <li className="nav-item pe-3">
               <Button classButton="btn-primary" href="/menus" text="Ver carta"/>
               </li>
             </ul>
