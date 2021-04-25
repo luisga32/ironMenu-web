@@ -4,6 +4,8 @@ import Product from './Product';
 
 const Products  = ({products}) => {
 
+
+
     return (
         <div className="Products d-flex flex-wrap justify-content-left mt-3">
 
