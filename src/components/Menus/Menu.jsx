@@ -70,17 +70,11 @@ const Menu = () => {
                   } else {
                     active = false
                   }
-
                   return (
-                    <Course course={cors} setCourse={setCourse} active={active} />
+                    <Course course={cors} setCourse={setCourse} active={active} key={cors.name}/>
                   )
                 })}
-                {/* <Course course={COURSES[0]} setCourse={setCourse} active='true'/> */}
-                {/* <li className="nav-item" role="presentation">
-          <button className="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">
-            Entrante
-      </button>
-        </li> */}
+     
               </ul>
               <div className="tab-content" id="myTabContent">
               {COURSES.map(cors => {
@@ -92,25 +86,10 @@ const Menu = () => {
                   }
 
                   return (
-                    <ProductsCourse course={cors} products={products} active={active} />
+                    <ProductsCourse course={cors} products={products} active={active} key={cors.name}/>
                   )
                 })}
 
-                {/* <div className="tab-pane fade show active" id="starter" role="tabpanel" aria-labelledby="starter-tab">
-                  <Products products={products} />
-                </div>
-                <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                  <Products products={products} />
-                </div>
-                <div className="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                  <Products products={products} />
-                </div>
-                <div className="tab-pane fade" id="extra" role="tabpanel" aria-labelledby="extra-tab">
-                  <Products products={products} />
-                </div>
-                <div className="tab-pane fade" id="finalizar" role="tabpanel" aria-labelledby="finalizar-tab">
-                  <Products products={products} />
-                </div> */}
               </div>
 
             </Fragment>
