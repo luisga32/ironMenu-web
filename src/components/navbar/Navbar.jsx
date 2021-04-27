@@ -8,7 +8,6 @@ import { useLocation } from 'react-router-dom';
 const Navbar = () => {
 
   let location = useLocation();
-  console.log('location pathname: ' , location.pathname)
  let home
   if (location.pathname=== '/') {
      home = true
