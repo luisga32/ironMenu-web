@@ -5,6 +5,7 @@ import { Route, Switch } from 'react-router';
 import Home from './components/Home/Home';
 import Menu from './components/Menus/Menu';
 import Product from './components/Product/Product';
+import Login from './components/Auth/Login';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route exact path="/" component={Home}/>
         <Route exact path="/menus/:id" component={Product}/>
         <Route exact path="/menus" component={Menu}/>
+        <Route exact path="/login" component={Login}/>
     
         
       </Switch>
