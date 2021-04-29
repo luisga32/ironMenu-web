@@ -1,50 +1,94 @@
-import React from 'react';
-import {Link, NavLink } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import Button from '../Misc/Button';
 import { useLocation } from 'react-router-dom';
+import { UserContext } from '../../contexts/Usercontext';
 
 
 
 const Navbar = () => {
+  const { user } = useContext(UserContext);
 
   let location = useLocation();
- let home
-  if (location.pathname=== '/') {
-     home = true
-  } else {
-     home = false
-  }
 
+  const checkButtons = (() => {
+    let home = false;
+    if (location.pathname === '/') {
+      home = true
+    }
+
+    if (user) {
+
+      if (home) {
+        return (
+          <div className="d-flex">
+            <li className="nav-item pe-3">
+              <Button classButton="" href="/" text="Cerrar sesión" />
+            </li>
+            <li className="nav-item pe-3">
+              <Button classButton="btn-primary" href="/menus" text="Hacer pedido" />
+            </li>
+          </div>
+        )
+      } else
+        return (
+          <div className="d-flex">
+            <li className="nav-item pe-3">
+              <Button classButton="" href="/" text="Cerrar sesión" />
+            </li>
+          </div>
+        )
+
+    } else {
+
+      if (home) {
+        return (
+          <div className="d-flex">
+            <li className="nav-item pe-3">
+              <Button classButton="" href="/login" text="iniciar sesion" />
+            </li>
+            <li className="nav-item pe-3">
+              <Button classButton="btn-primary" href="/menus" text="Ver carta" />
+            </li>
+
+          </div>
+
+
+        )
+      } else
+        return (
+          <div className="d-flex" >
+            <li className="nav-item pe-3">
+              <Button classButton="" href="/login" text="iniciar sesion" />
+            </li>
+          </div>
+        )
+
+    }
+
+  });
+
+  
 
     return (
-        <header className="Navbar"> 
-       <nav className="navbar navbar-expand-lg navbar-light">
+    <header className="Navbar">
+      <nav className="navbar navbar-expand-lg navbar-light">
         <div className="container-fluid px-5">
           <Link className="navbar-brand fs-1 fw-bolder" to="/" >ironMenu</Link>
-         <div className="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+          <div className="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
             <ul className="navbar-nav nav-pills">
-              <li className="nav-item pe-3">
-                <Button classButton="" href="/login" text="iniciar Sesión"/>
-              </li>
-              {
-                home && (
-                  <li className="nav-item pe-3">
-                  <Button classButton="btn-primary" href="/menus" text="Ver carta"/>
-                  </li>
+              { checkButtons() 
+                }
 
-                )
-
-              }
-           
             </ul>
           </div>
         </div>
       </nav>
-        </header>
- 
+    </header>
 
-    )
- 
+
+  )
+
 }
 
 export default Navbar;

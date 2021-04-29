@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import './Login.css';
-import Button from '../Misc/Button';
+import {login} from '../../services/AuthService';
+import { setAccessToken } from '../../stores/accessTokenStore';
+import { useHistory } from 'react-router-dom';
+
 
 const EMAIL_PATTERN = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 const validators = {
@@ -44,8 +47,9 @@ const Login = () => {
         }
     });
 
-    const [touched, setTouched] = useState({});
 
+    const [touched, setTouched] = useState({});
+    const history = useHistory()
     const isValid = () =>{
         const {errors} = user;
         return !Object.keys(errors).some( error => errors[error])
@@ -55,7 +59,13 @@ const Login = () => {
         e.preventDefault();
 
         if (isValid()) {
-            console.log(user.fields);
+     //       console.log(user.fields);
+            login(user.fields)
+            .then((response) => {
+       //         console.log(response)
+                setAccessToken(response.access_token);
+                history.push('/menus')
+            })
         }
     }
 
