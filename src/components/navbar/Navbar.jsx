@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import Button from '../Misc/Button';
 import { useLocation } from 'react-router-dom';
 import { UserContext } from '../../contexts/Usercontext';
+import { logout } from '../../stores/accessTokenStore';
 
 
 
@@ -23,8 +24,8 @@ const Navbar = () => {
         return (
           <div className="d-flex">
             <li className="nav-item pe-3">
-              <Button classButton="" href="/" text="Cerrar sesión" />
-            </li>
+                   <button className="btn" onClick={logout}>Cerrar Sesion</button>
+       </li>
             <li className="nav-item pe-3">
               <Button classButton="btn-primary" href="/menus" text="Hacer pedido" />
             </li>
@@ -34,7 +35,7 @@ const Navbar = () => {
         return (
           <div className="d-flex">
             <li className="nav-item pe-3">
-              <Button classButton="" href="/" text="Cerrar sesión" />
+            <button className="btn" onClick={logout}>Cerrar Sesion</button>
             </li>
           </div>
         )
@@ -68,17 +69,17 @@ const Navbar = () => {
 
   });
 
-  
 
-    return (
+
+  return (
     <header className="Navbar">
       <nav className="navbar navbar-expand-lg navbar-light">
         <div className="container-fluid px-5">
           <Link className="navbar-brand fs-1 fw-bolder" to="/" >ironMenu</Link>
           <div className="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
             <ul className="navbar-nav nav-pills">
-              { checkButtons() 
-                }
+              {checkButtons()
+              }
 
             </ul>
           </div>

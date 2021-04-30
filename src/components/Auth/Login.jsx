@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Login.css';
+import { useUser } from '../../hooks/useUser';
 import {login} from '../../services/AuthService';
 import { setAccessToken } from '../../stores/accessTokenStore';
 import { useHistory } from 'react-router-dom';
@@ -35,6 +36,8 @@ const validators = {
 }
 
 const Login = () => {
+    const history = useHistory()
+    const {getUser: doLogin } = useUser(); 
     const [user, setUser] = useState({
 
         fields: {
@@ -49,7 +52,8 @@ const Login = () => {
 
 
     const [touched, setTouched] = useState({});
-    const history = useHistory()
+    
+
     const isValid = () =>{
         const {errors} = user;
         return !Object.keys(errors).some( error => errors[error])
@@ -64,7 +68,8 @@ const Login = () => {
             .then((response) => {
        //         console.log(response)
                 setAccessToken(response.access_token);
-                history.push('/menus')
+                doLogin().then(()=> history.push('/menus'))
+                
             })
         }
     }
