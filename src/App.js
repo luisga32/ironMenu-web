@@ -6,20 +6,30 @@ import Home from './components/Home/Home';
 import Menu from './components/Menus/Menu';
 import Product from './components/Product/Product';
 import Login from './components/Auth/Login';
+import { OrderContextProvider } from './contexts/OrderContext';
 
 function App() {
   return (
-    <div className="App">
-      <Switch>
-        <Route exact path="/" component={Home}/>
-        <Route exact path="/menus/:id" component={Product}/>
-        <Route exact path="/menus" component={Menu}/>
-        <Route exact path="/login" component={Login}/>
-    
-        
-      </Switch>
+    <OrderContextProvider>
+      <div className="App">
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/menus/:id" component={Product} />
+          <Route exact path="/menus" component={Menu} />
+          <Route exact path="/login" component={Login} />
 
-    </div>
+
+        </Switch>
+
+      </div>
+
+
+    </OrderContextProvider>
+
+
+
+
+
   );
 }
 
