@@ -15,7 +15,7 @@ const Product = ({ image, title, id }) => {
 
     console.log('user: ', user)
 
-    const addProduct = (id) => {
+    const addProduct = () => {
         console.log('id: ' , id)
         setOrder({order : id})
     };
@@ -34,7 +34,7 @@ const Product = ({ image, title, id }) => {
             {
                 user && (
                     <div className="d-flex justify-content-end p-2">
-                        <button className="btn btn-outline-light" onClick={addProduct(id)}>
+                        <button className="btn btn-outline-light" onClick={addProduct}>
                             <FontAwesomeIcon icon={faPlusCircle} size="2x" color="black" />
                         </button>
                     </div>
