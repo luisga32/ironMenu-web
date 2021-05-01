@@ -5,8 +5,9 @@ export  const OrderContext = createContext()
 export function OrderContextProvider ({children}){
 
     const  orderInit = {
-        id : ''
-    }
+        typeMenu: 'full',
+        orderItems: []
+      }
 
     const [order, setOrder] = useState(orderInit)
 

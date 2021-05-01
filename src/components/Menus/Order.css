@@ -1,0 +1,9 @@
+.Order {
+    width: 450px;
+    margin-bottom: 25px;
+}
+
+.Order h3 {
+    padding-top: 20px;
+    text-align: center;
+}

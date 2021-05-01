@@ -1,15 +1,14 @@
-import React, { useContext } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import Button from '../Misc/Button';
 import { useLocation } from 'react-router-dom';
-import { UserContext } from '../../contexts/Usercontext';
 import { logout } from '../../stores/accessTokenStore';
+import { useUserContext } from '../../hooks/useUserContext';
 
 
 
 const Navbar = () => {
-  const { user } = useContext(UserContext);
-
+const { user } = useUserContext()
   let location = useLocation();
 
   const checkButtons = (() => {

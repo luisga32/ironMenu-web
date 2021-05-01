@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { getProduct } from '../../services/ProductService';
 import './Product.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

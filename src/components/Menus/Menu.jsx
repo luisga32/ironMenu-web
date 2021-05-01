@@ -5,6 +5,8 @@ import SyncLoader from 'react-spinners/SyncLoader';
 import Course from './Course';
 import ProductsCourse from './ProductsCourse';
 import Order from './Order';
+import { useUserContext } from '../../hooks/useUserContext';
+import { useCourseContext} from '../../hooks/useCourseContext';
 
 
 const COURSES = [
@@ -29,12 +31,13 @@ const COURSES = [
 
 
 const Menu = () => {
+const { user } = useUserContext();
 
   // state for type of course
 
   // tengo que cambiar el valor cada vez que se cambie de pestaña
-  const [course, setCourse] = useState('starter')
-
+//  const [course, setCourse] = useState('starter')
+  const {course , setCourse} = useCourseContext();
   // state for list of products
   const [products, setProducts] = useState([])
 
@@ -42,6 +45,7 @@ const Menu = () => {
   useEffect(() => {
     getProductsList(course)
       .then((dishes) => {
+        console.log('dishes: ' , dishes);
         setProducts(dishes)
 
 
@@ -79,7 +83,7 @@ const Menu = () => {
      
               </ul>
               <main className='d-flex flex-row'>
-              <div className="tab-content col-10" id="myTabContent">
+              <div className={`tab-content ${ (user) ? 'col-9':'' }`} id="myTabContent">
               {COURSES.map(cors => {
                   let active;
                   if (cors.name === course) {
@@ -94,7 +98,11 @@ const Menu = () => {
                 })}
 
               </div>
-              <Order/>
+
+              { user && (
+                <Order/>
+
+              )}
 
               </main>
 

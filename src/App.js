@@ -7,10 +7,12 @@ import Menu from './components/Menus/Menu';
 import Product from './components/Product/Product';
 import Login from './components/Auth/Login';
 import { OrderContextProvider } from './contexts/OrderContext';
+import { CourseContextProvider } from './contexts/CourseContext';
 
 function App() {
   return (
     <OrderContextProvider>
+      <CourseContextProvider>
       <div className="App">
         <Switch>
           <Route exact path="/" component={Home} />
@@ -22,6 +24,9 @@ function App() {
         </Switch>
 
       </div>
+
+      </CourseContextProvider>
+ 
 
 
     </OrderContextProvider>
