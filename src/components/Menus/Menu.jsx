@@ -4,6 +4,8 @@ import Navbar from '../navbar/Navbar';
 import SyncLoader from 'react-spinners/SyncLoader';
 import Course from './Course';
 import ProductsCourse from './ProductsCourse';
+import Order from './Order';
+
 
 const COURSES = [
   {
@@ -76,7 +78,8 @@ const Menu = () => {
                 })}
      
               </ul>
-              <div className="tab-content" id="myTabContent">
+              <main className='d-flex flex-row'>
+              <div className="tab-content col-10" id="myTabContent">
               {COURSES.map(cors => {
                   let active;
                   if (cors.name === course) {
@@ -91,7 +94,12 @@ const Menu = () => {
                 })}
 
               </div>
+              <Order/>
 
+              </main>
+
+           
+ 
             </Fragment>
 
 

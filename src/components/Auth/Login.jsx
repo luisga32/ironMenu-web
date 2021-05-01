@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Login.css';
-import { useUser } from '../../hooks/useUser';
+import { useUserContext } from '../../hooks/useUserContext';
 import {login} from '../../services/AuthService';
 import { setAccessToken } from '../../stores/accessTokenStore';
 import { useHistory } from 'react-router-dom';
@@ -37,7 +37,7 @@ const validators = {
 
 const Login = () => {
     const history = useHistory()
-    const {getUser: doLogin } = useUser(); 
+    const {getUser: doLogin } = useUserContext()   ; 
     const [user, setUser] = useState({
 
         fields: {

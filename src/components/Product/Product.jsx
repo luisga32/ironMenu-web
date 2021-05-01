@@ -19,6 +19,7 @@ const Product = () => {
     useEffect(() => {
         getProduct(params.id)
             .then((dish) => {
+                console.log('detalle dish: ', dish)
                 setProduct(dish)
             })
     }, [params.id])

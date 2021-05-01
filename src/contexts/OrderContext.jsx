@@ -1,17 +1,27 @@
-import {createContext, useState } from 'react';
+import {createContext, useEffect, useState } from 'react';
 
 export  const OrderContext = createContext()
 
 export function OrderContextProvider ({children}){
 
-    const [order, setOrder] = useState(null)
+    const  orderInit = {
+        id : ''
+    }
+
+    const [order, setOrder] = useState(orderInit)
 
 //  function that update order everytime click on a dish
+    
+     useEffect (() => {
+        console.log('order context: ' , order)
+
+     },[order])
+
      
 
     const value = { 
-        order : order,
-        setOrder: setOrder
+        order ,
+        setOrder
     }
    
     return <OrderContext.Provider value={value}>{children}</OrderContext.Provider>
