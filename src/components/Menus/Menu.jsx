@@ -45,7 +45,6 @@ const { user } = useUserContext();
   useEffect(() => {
     getProductsList(course)
       .then((dishes) => {
-        console.log('dishes: ' , dishes);
         setProducts(dishes)
 
 

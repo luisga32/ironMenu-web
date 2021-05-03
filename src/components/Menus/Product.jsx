@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Product.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMinusCircle, faPlusCircle } from '@fortawesome/free-solid-svg-icons';    
+import { faMinusCircle, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { useUserContext } from '../../hooks/useUserContext';
 import { useOrderContext } from '../../hooks/useOrderContext';
 import { useCourseContext } from '../../hooks/useCourseContext';
@@ -14,61 +14,77 @@ const Product = ({ image, title, id }) => {
     const { course } = useCourseContext();
     const { order, setOrder } = useOrderContext();
 
-   
+
 
     const addProduct = () => {
-        console.log('id: ', id)
-        console.log('add product order:', order)
-        console.log(' course: ' , course)
-     
-        const item ={};
+
+
+        const item = {};
 
         item.course = course;
         item.productId = id;
+        item.title = title;
         item.price = 0;
-        item.quantity = 0;
+        item.quantity = 1;
         order.orderItems.push(item);
 
-        // if order.orderItems esta vacio
-        // order.or
-        
-        console.log('orderItems : ', order.orderItems)
-       
-        order.id = id;
+        //   order.id = id;
 
-        setOrder( {...order} )
-     //   setOrder((prev) =>( {...prev , order.id: id} ))
+        setOrder({ ...order })
+        //   setOrder((prev) =>( {...prev , order.id: id} ))
     };
 
 
     const removeProduct = () => {
+        const pos = order.orderItems.findIndex( item => item.productId === id)
+        order.orderItems.splice(pos, 1)
+  
+        setOrder({ ...order })
+    }
 
-        order.orderItems.forEach( (item , pos) => {
-            if (item.course === course) {
-                order.orderItems.splice(pos,1)
-            }
-        })
-      
-        order.id = null;
-        setOrder( {...order} )
-        }
 
-    
 
     const productButton = () => {
 
-        console.log('order:', order)
+        //    console.log('order:', order)
 
-        if (order.id === id) {
-            return (
-                <div className="d-flex justify-content-end p-2">
-                    <button className="btn btn-outline-light" onClick={removeProduct}>
-                        <FontAwesomeIcon icon={faMinusCircle} size="1x" color="black" />
-                    </button>
-                </div>
-            )
+        if (order.orderItems.length > 0) {
+            const foundCourse = order.orderItems.some( item =>  item.course === course) 
+            const foundItem = order.orderItems.find( item => item.productId === id)
+                if (foundCourse) {
+                    if (foundItem) {
+                        return (
+                            <div className="d-flex justify-content-end p-2">
+                                <button className="btn btn-outline-light" onClick={removeProduct}>
+                                    <FontAwesomeIcon icon={faMinusCircle} size="1x" color="black" />
+                                </button>
+                            </div>
+                        )
+
+                    } else {
+                        return (
+                           
+                            <div className="d-flex justify-content-end p-2">
+                                <button className="btn btn-outline-light disabled" onClick={addProduct}>
+                                    <FontAwesomeIcon icon={faPlusCircle} size="1x" color="black" />
+                                </button>
+                            </div>
+                        )
+                    }
+                } else {
+                        return (
+                            
+                            <div className="d-flex justify-content-end p-2">
+                                <button className="btn btn-outline-light" onClick={addProduct}>
+                                    <FontAwesomeIcon icon={faPlusCircle} size="1x" color="black" />
+                                </button>
+                            </div>
+                        )
+                    }
+                
 
         } else {
+
             return (
                 <div className="d-flex justify-content-end p-2">
                     <button className="btn btn-outline-light" onClick={addProduct}>
@@ -76,6 +92,7 @@ const Product = ({ image, title, id }) => {
                     </button>
                 </div>
             )
+
         }
     }
 
@@ -90,7 +107,7 @@ const Product = ({ image, title, id }) => {
             </Link>
             {
                 user && productButton()
-             }
+            }
 
 
         </div>
