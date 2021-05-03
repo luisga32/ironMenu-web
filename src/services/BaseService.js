@@ -4,7 +4,7 @@ import { getAccessToken } from '../stores/accessTokenStore';
 // add url to heroku pending
 export const create = (ops = {}) => {
     const http = axios.create( {
-        baseURL:'http://localhost:3001/api',
+        baseURL:`${process.env.REACT_APP_API_HOST}/api`,
         ...ops
     });
 
