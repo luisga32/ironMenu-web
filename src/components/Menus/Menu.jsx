@@ -74,8 +74,6 @@ const Menu = () => {
       orderDetail.productsOrder.push(dish);
     });
 
-    console.log ('confirm order detail: ' , orderDetail);
-
     createOrder(orderDetail)
     .then( (order) => {
       setOrder(orderInit)
@@ -89,9 +87,12 @@ const Menu = () => {
 
 
   let confirmOrd = false;
+  let disable = 'disabled';
   if (order && order.orderItems.length === 4) {
     confirmOrd = true
+    disable = ''
   }
+  console.log('confirm orden : ' , confirmOrd)
  
   return (
     <div className="Menu">
@@ -110,18 +111,17 @@ const Menu = () => {
               <ul className="nav nav-tabs" id="myTab" role="tablist">
 
                 {COURSES.map(cors => {
-                  let active;
+                  let active = false;
                   if (cors.name === course) {
                     active = true
-                  } else {
-                    active = false
                   }
                   return (
                     <Course course={cors} setCourse={setCourse} active={active} key={cors.name} />
                   )
                 })}
                 <li className="nav-item Course" role="presentation" >
-                  <button className={`nav-link ${user && confirmOrd ? 'active buttonCourseActive' : ''} `}  data-bs-toggle="tab" data-bs-target='confirm' type="button" role="tab"
+                  <button className={`nav-link ${(user && confirmOrd) ? 'active buttonCourseActive' : ''} `}  data-bs-toggle="tab" data-bs-target='confirm' 
+                  type="button" role="tab" disabled={!user || !confirmOrd}            
                     aria-controls='confirm' aria-selected="true" onClick={confirmOrder}>
                    Confirmar Pedido
                   </button>
