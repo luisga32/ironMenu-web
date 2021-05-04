@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../Misc/Button';
 import { useLocation } from 'react-router-dom';
-import { logout } from '../../stores/accessTokenStore';
 import { useUserContext } from '../../hooks/useUserContext';
+import LoggedButton from './LoggedButton';
 
 
 
@@ -21,7 +21,8 @@ const { user } = useUserContext()
       return (
         <div className="d-flex">
           <li className="nav-item pe-3">
-            <button className="btn" onClick={logout}>Cerrar Sesion</button>
+            <LoggedButton name={user.name}/>
+            {/* <button className="btn" onClick={logout}>Cerrar Sesion</button> */}
           </li>
 
           { home && (
