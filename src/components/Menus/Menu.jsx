@@ -87,10 +87,8 @@ const Menu = () => {
 
 
   let confirmOrd = false;
-  let disable = 'disabled';
   if (order && order.orderItems.length === 4) {
     confirmOrd = true
-    disable = ''
   }
   console.log('confirm orden : ' , confirmOrd)
  

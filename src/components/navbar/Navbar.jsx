@@ -8,7 +8,7 @@ import LoggedButton from './LoggedButton';
 
 
 const Navbar = () => {
-const { user } = useUserContext()
+  const { user } = useUserContext()
   let location = useLocation();
 
   const checkButtons = (() => {
@@ -21,8 +21,7 @@ const { user } = useUserContext()
       return (
         <div className="d-flex">
           <li className="nav-item pe-3">
-            <LoggedButton name={user.name}/>
-            {/* <button className="btn" onClick={logout}>Cerrar Sesion</button> */}
+            <LoggedButton name={user.name} />
           </li>
 
           { home && (
@@ -49,80 +48,26 @@ const { user } = useUserContext()
 
 
 
-    //   if (user) {
+  return (
+    <header className="Navbar">
+      <nav className="navbar navbar-expand-lg navbar-light">
+        <div className="container-fluid px-5">
+          <Link className="navbar-brand fs-1 fw-bolder" to="/" >ironMenu</Link>
+          <div className="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+            <ul className="navbar-nav nav-pills">
 
 
-    //     if (home) {
-    //       return (
-    //         <div className="d-flex">
-    //           <li className="nav-item pe-3">
-    //                  <button className="btn" onClick={logout}>Cerrar Sesion</button>
-    //          </li>
-    //           <li className="nav-item pe-3">
-    //             <Button classButton="btn-primary" href="/menus" text="Hacer pedido" />
-    //           </li>
-    //         </div>
-    //       )
-    //     } else
-    //       return (
-    //         <div className="d-flex">
-    //           <li className="nav-item pe-3">
-    //           <button className="btn" onClick={logout}>Cerrar Sesion</button>
-    //           </li>
-    //         </div>
-    //       )
+              {checkButtons()}
 
-    //   } else {
-
-    //     if (home) {
-    //       return (
-    //         <div className="d-flex">
-    //           <li className="nav-item pe-3">
-    //             <Button classButton="" href="/login" text="iniciar sesion" />
-    //           </li>
-    //           <li className="nav-item pe-3">
-    //             <Button classButton="btn-primary" href="/menus" text="Ver carta" />
-    //           </li>
-
-    //         </div>
-
-
-    //       )
-    //     } else
-    //       return (
-    //         <div className="d-flex" >
-    //           <li className="nav-item pe-3">
-    //             <Button classButton="" href="/login" text="iniciar sesion" />
-    //           </li>
-    //         </div>
-    //       )
-
-    //   }
-
-    // });
-
-
-
-    return (
-      <header className="Navbar">
-        <nav className="navbar navbar-expand-lg navbar-light">
-          <div className="container-fluid px-5">
-            <Link className="navbar-brand fs-1 fw-bolder" to="/" >ironMenu</Link>
-            <div className="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
-              <ul className="navbar-nav nav-pills">
-
-
-                {checkButtons()}
-
-              </ul>
-            </div>
+            </ul>
           </div>
-        </nav>
-      </header>
+        </div>
+      </nav>
+    </header>
 
 
-    )
+  )
 
-  }
+}
 
 export default Navbar;
