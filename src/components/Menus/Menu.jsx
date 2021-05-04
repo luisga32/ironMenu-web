@@ -1,12 +1,17 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { getProductsList } from '../../services/ProductService';
+import { createOrder } from '../../services/OrderServices';
 import Navbar from '../navbar/Navbar';
 import SyncLoader from 'react-spinners/SyncLoader';
 import Course from './Course';
 import ProductsCourse from './ProductsCourse';
 import Order from './Order';
 import { useUserContext } from '../../hooks/useUserContext';
-import { useCourseContext} from '../../hooks/useCourseContext';
+import { useCourseContext } from '../../hooks/useCourseContext';
+import { useOrderContext } from '../../hooks/useOrderContext';
+import { typeMenu } from '../../constants/constans';
+import { useHistory } from 'react-router';
+
 
 
 const COURSES = [
@@ -31,15 +36,16 @@ const COURSES = [
 
 
 const Menu = () => {
-const { user } = useUserContext();
+  const { user } = useUserContext();
 
   // state for type of course
 
-  // tengo que cambiar el valor cada vez que se cambie de pestaña
-//  const [course, setCourse] = useState('starter')
-  const {course , setCourse} = useCourseContext();
+  const history = useHistory();
+  const { course, setCourse } = useCourseContext();
   // state for list of products
   const [products, setProducts] = useState([])
+
+  const {order, setOrder, orderInit} = useOrderContext();
 
 
   useEffect(() => {
@@ -51,7 +57,42 @@ const { user } = useUserContext();
       })
   }, [course])
 
+  const confirmOrder = () => {
+    let orderDetail ={}
+    orderDetail.userId = user.id;
+    orderDetail.typeMenu = order.typeMenu;
+    const typeMenuOrder = typeMenu.find( item => order.typeMenu === item.key)
+    orderDetail.price = typeMenuOrder.price;
+    orderDetail.address = user.address;
+    orderDetail.productsOrder = [];
+    order.orderItems.forEach(element => {
+      let dish = {}
+      dish.course = element.course;
+      dish.productId = element.productId;
+      dish.price = element.price;
+      dish.quantity = element.quantity;
+      orderDetail.productsOrder.push(dish);
+    });
 
+    console.log ('confirm order detail: ' , orderDetail);
+
+    createOrder(orderDetail)
+    .then( (order) => {
+      setOrder(orderInit)
+      history.push('/');
+    })
+    
+  
+
+
+  };
+
+
+  let confirmOrd = false;
+  if (order && order.orderItems.length === 4) {
+    confirmOrd = true
+  }
+ 
   return (
     <div className="Menu">
       <Navbar />
@@ -76,37 +117,44 @@ const { user } = useUserContext();
                     active = false
                   }
                   return (
-                    <Course course={cors} setCourse={setCourse} active={active} key={cors.name}/>
+                    <Course course={cors} setCourse={setCourse} active={active} key={cors.name} />
                   )
                 })}
-     
+                <li className="nav-item Course" role="presentation" >
+                  <button className={`nav-link ${user && confirmOrd ? 'active buttonCourseActive' : ''} `}  data-bs-toggle="tab" data-bs-target='confirm' type="button" role="tab"
+                    aria-controls='confirm' aria-selected="true" onClick={confirmOrder}>
+                   Confirmar Pedido
+                  </button>
+
+                </li>
+
               </ul>
               <main className='d-flex flex-row'>
-              <div className={`tab-content ${ (user) ? 'col-9':'' }`} id="myTabContent">
-              {COURSES.map(cors => {
-                  let active;
-                  if (cors.name === course) {
-                    active = true
-                  } else {
-                    active = false
-                  }
+                <div className={`tab-content ${(user) ? 'col-9' : ''}`} id="myTabContent">
+                  {COURSES.map(cors => {
+                    let active;
+                    if (cors.name === course) {
+                      active = true
+                    } else {
+                      active = false
+                    }
 
-                  return (
-                    <ProductsCourse course={cors} products={products} active={active} key={cors.name}/>
-                  )
-                })}
+                    return (
+                      <ProductsCourse course={cors} products={products} active={active} key={cors.name} />
+                    )
+                  })}
 
-              </div>
+                </div>
 
-              { user && (
-                <Order/>
+                {user && (
+                  <Order />
 
-              )}
+                )}
 
               </main>
 
-           
- 
+
+
             </Fragment>
 
 

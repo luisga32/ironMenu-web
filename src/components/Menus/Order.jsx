@@ -54,27 +54,20 @@ const Order = () => {
 
     const orderDetail = getDetailProduct();
     console.log('order detail items: ', orderDetail.orderItems);
-    orderDetail.orderItems.map( (item) =>  {
-        console.log(Object.keys(item));
-        console.log('item : ', item)
-        
-    })
-
+ 
     return (
         <div className='Order mt-3 pt-2 border rounded border-primary'>
 
             <h3 >Tu pedido</h3>
-
-
-             { orderDetail && ( 
+             { order && ( 
                  <>
                  <div>
                  {orderDetail.description}    
                  </div>
                  { <ul> 
                     {
-                        orderDetail.orderItems.map( (item) =>   (<li key={item.productId}>{item.quantity} x {item.productId}</li>))
-                         
+                        // orderDetail.orderItems.map( (item) =>   (<li key={item.productId}>{item.quantity} x {item.productId}</li>))
+                        order.orderItems.map( (item) =>   (<li key={item.productId}>{item.quantity} x {item.title}</li>))
                     }
                  </ul>
                   }

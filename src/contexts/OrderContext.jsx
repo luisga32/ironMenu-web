@@ -4,7 +4,7 @@ export  const OrderContext = createContext()
 
 export function OrderContextProvider ({children}){
 
-    const  orderInit = {
+    const orderInit = {
         typeMenu: 'full',
         orderItems: []
       }
@@ -22,7 +22,8 @@ export function OrderContextProvider ({children}){
 
     const value = { 
         order ,
-        setOrder
+        setOrder,
+        orderInit
     }
    
     return <OrderContext.Provider value={value}>{children}</OrderContext.Provider>
