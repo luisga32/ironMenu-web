@@ -15,7 +15,7 @@ const Home = () => {
                 <div className="text" >
                     <h1>Ahorra tiempo durante tu semana de trabajo y olvidate de cocinar </h1>
                     <p>Pide un menu de comida en pocos pasos. Elige entre todos los platos de nuestra carta la combinación que te guste y te lo llevamos a casa</p>
-                    <Button classButton="btn-outline-primary" href="/menus" text="Hacer pedido" />
+                    <Button classButton="btn-outline-color" href="/menus" text="Hacer pedido" />
 
                 </div>
 

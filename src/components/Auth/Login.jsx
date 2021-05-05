@@ -137,7 +137,7 @@ const Login = () => {
                         <label htmlFor="password" className="form-label">Contraseña</label>
                         <input type="password" 
                         className={`form-control border-0 border-bottom ${errors.password && touched.password ? 'is-invalid' : ''}`} 
-                            id="password" name="password" value={password} value={password} onChange={onChange} onBlur={onBlur} onFocus={onFocus}/>
+                            id="password" name="password" value={password} onChange={onChange} onBlur={onBlur} onFocus={onFocus}/>
                               {
                         errors.password && (
                             <div className="invalid-feedback">

@@ -8,7 +8,6 @@ export const createOrder = (order) => {
 }
 
 export const getOrdersList = (userId) => {
-    console.log(' get Order List')
 
     return http.get('/users/me/orders')
 };

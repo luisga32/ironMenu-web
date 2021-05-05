@@ -1,6 +1,9 @@
- /* .App {
-   text-align: center; 
- } */
+ .App {
+  --main-bg-bt-color: rgb(3, 208, 182);
+  --main-tx-bt-color:white; 
+  --main-bg-color: rgba(242, 242, 242, 0.918);
+
+ } 
 
 .App-logo {
   height: 40vmin;
@@ -35,4 +38,23 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.btn-color {
+  background-color:var(--main-bg-bt-color);
+  color:var(--main-tx-bt-color);
+}
+
+.btn-color:hover {
+  background-color:var(--main-bg-bt-color);
+  color:var(--main-tx-bt-color);
+}
+
+.btn-outline-color {
+  border-color: var(--main-bg-bt-color);
+  color:var(--main-tx-bt-color);
+}
+.btn-outline-color:hover {
+  background-color:var(--main-bg-bt-color);
+  color:var(--main-tx-bt-color);
 }

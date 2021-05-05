@@ -8,6 +8,8 @@ import Login from './components/Auth/Login';
 import { OrderContextProvider } from './contexts/OrderContext';
 import { CourseContextProvider } from './contexts/CourseContext';
 import Orders from './components/Order/Orders';
+import OrderDetail from './components/Order/OrderModal';
+
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
           <Route exact path="/menus" component={Menu} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/user/me/orders" component={Orders} />
+
 
 
         </Switch>

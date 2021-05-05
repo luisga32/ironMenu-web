@@ -1,0 +1,24 @@
+.OrderModal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    z-index: 2;
+}
+
+.OrderModal .overlay {
+    position: absolute;
+    background-color: #2d2d2d73;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.OrderModal .modal-dialog {
+    min-width: 500px !important;
+    z-index: 10;
+}

@@ -1,4 +1,4 @@
-import {createContext, useEffect, useState } from 'react';
+import {createContext, useState } from 'react';
 
 export  const OrderContext = createContext()
 
@@ -13,10 +13,10 @@ export function OrderContextProvider ({children}){
 
 //  function that update order everytime click on a dish
     
-      useEffect (() => {
-         console.log('order context: ' , order)
+      // useEffect (() => {
+      //    console.log('order context: ' , order)
 
-      },[order])
+      // },[order])
 
      
 

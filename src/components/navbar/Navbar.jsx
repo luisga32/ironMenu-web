@@ -4,6 +4,7 @@ import Button from '../Misc/Button';
 import { useLocation } from 'react-router-dom';
 import { useUserContext } from '../../hooks/useUserContext';
 import LoggedButton from './LoggedButton';
+import './Navbar.css';
 
 
 
@@ -13,6 +14,7 @@ const Navbar = () => {
 
   const checkButtons = (() => {
     let home = false;
+    let classButton=''
     if (location.pathname === '/') {
       home = true
     }
@@ -26,20 +28,25 @@ const Navbar = () => {
 
           { home && (
             <li className="nav-item pe-3">
-              <Button classButton="btn-primary" href="/menus" text="Hacer pedido" />
+              <Button classButton="btn-color" href="/menus" text="Hacer pedido" />
             </li>)}
         </div>
       )
     } else {
+
+      if (!home) {
+        classButton='btn-color'
+
+      }
       return (
         <div className="d-flex">
           <li className="nav-item pe-3">
-            <Button classButton="" href="/login" text="iniciar sesion" />
+            <Button classButton={classButton} href="/login" text="iniciar sesion" />
           </li>
 
           { home && (
             <li className="nav-item pe-3">
-              <Button classButton="btn-primary" href="/menus" text="Ver carta" />
+              <Button classButton="btn-color" href="/menus" text="Ver carta" />
             </li>)}
         </div>
       )

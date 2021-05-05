@@ -1,38 +1,47 @@
 import React, { useEffect, useState } from 'react';
 import { useUserContext } from '../../hooks/useUserContext';
 import { getOrdersList } from '../../services/OrderServices';
-
+import SyncLoader from 'react-spinners/SyncLoader';
+import Navbar from '../navbar/Navbar';
 import Order from './Order';
 
 
 const Orders = () => {
 
     const [orders, setOrders] = useState([]);
+    const [loading, setLoading] = useState(true)
     const { user } = useUserContext();
-  
+
     useEffect(() => {
         if (user) {
-            console.log( 'user: ' ,user.id)
             getOrdersList(user.id)
-            .then((orders) => {
-                console.log(' orders: ' , orders)
-                setOrders(orders)
-            })
-            .catch ( (e) => {console.log( 'error ' , e)})
-
-        } else {
-
-            console.log('user : ', user)
-        }
-    },[])
+                .then((listOrders) => {
+                    setOrders(listOrders)
+                    setLoading(false)
+                })
+        };
+    }, [loading, user])
 
     return (
         <div className="Orders">
-            <ul class="list-group">
+            <Navbar/>
+            <ul className="list-group">
 
-            {orders.map((order) =>(
-                <Order order={order} key={order.id}/>
-            ))}
+                {
+                loading 
+                ? 
+                (
+                    <div className="text-center">
+                        <SyncLoader color="blue" />
+                    </div>
+
+                ) :
+
+                    orders.map((order) => (
+                        
+                            <Order order={order} key={order.id} />
+                        
+                    ))}
 
             </ul>
         </div>

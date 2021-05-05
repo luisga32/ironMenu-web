@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext,useState } from "react";
 
 export const CourseContext = createContext();
 
@@ -7,10 +7,10 @@ export function CourseContextProvider ({children}) {
 
     const [course, setCourse] = useState('starter')
 
-    useEffect (() => {
-        console.log(' cambia course', course)
+    // useEffect (() => {
+    //     console.log(' cambia course', course)
 
-    },[course])
+    // },[course])
 
     const value = {
         course,
