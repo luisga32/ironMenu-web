@@ -86,7 +86,7 @@ const Menu = () => {
   return (
     <div className="Menu">
       <Navbar />
-      <ul className="nav nav-tabs" id="myTab" role="tablist">
+      <ul className="nav nav-tabs tabs" id="myTab" role="tablist">
 
         {COURSES.map(cors => {
           let active = false;
@@ -98,7 +98,7 @@ const Menu = () => {
           )
         })}
         <li className="nav-item Course" role="presentation" >
-          <button className={`nav-link ${(user && confirmOrd) ? 'active buttonCourseActive' : ''} `} data-bs-toggle="tab" data-bs-target='confirm'
+          <button className={`nav-link ${(user && confirmOrd) ? 'active buttonCourseActive' : 'buttonCourseNotActive'} `} data-bs-toggle="tab" data-bs-target='confirm'
             type="button" role="tab" disabled={!user || !confirmOrd}
             aria-controls='confirm' aria-selected="true" onClick={confirmOrder}>
             Confirmar Pedido
@@ -107,7 +107,7 @@ const Menu = () => {
         </li>
 
       </ul>
-        <div clss></div>
+       
       {
         (loading)
           ?

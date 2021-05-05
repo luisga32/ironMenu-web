@@ -1,8 +1,17 @@
+
 .Course button {
-    width:350px;
+    width: 366px;
+    border: solid 1px;
+    border-color: var(--main-bg-color) !important;
  }
 
  .buttonCourseActive {
 
-    background-color: aqua;
+   background-color:var(--active-bg-color) !important;
+   color:var(--main-tx-bt-color) !important;
+ }
+
+ .buttonCourseNotActive {
+
+   background-color:var( --second-bg-color) !important;
  }

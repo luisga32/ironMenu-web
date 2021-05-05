@@ -1,3 +1,8 @@
-.main {
+.Menu {
     background-color:var(--main-bg-color);
+}
+
+.Menu .tabs {
+    background-color:var( --second-bg-color) !important;
+
 }
