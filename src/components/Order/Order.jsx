@@ -37,7 +37,7 @@ const Order = ({ order }) => {
     
     return (
         <div>
-            <li className="Order list-group-item d-flex flex-row justify-content-between" >
+            <li className="Order-box list-group-item d-flex flex-row justify-content-between border border-white rounded" >
                 <div >
                     <h6>{orderDetail.id}</h6>
                     <p>La fecha de su pedido: {orderDetail.date}</p>
@@ -46,7 +46,7 @@ const Order = ({ order }) => {
 
                 <div className="d-flex flex-column">
                     <p>{orderDetail.state}</p>
-                    <button className="btn btn-primary" onClick={() => setShowModal(true)}>Detalle</button>
+                    <button className="btn btn-color" onClick={() => setShowModal(true)}>Detalle</button>
                 </div>
             </li>
             {showModal && <OrderModal order={orderDetail} setShowModal={setShowModal}/>}

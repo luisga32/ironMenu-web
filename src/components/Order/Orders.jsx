@@ -4,6 +4,8 @@ import { getOrdersList } from '../../services/OrderServices';
 import SyncLoader from 'react-spinners/SyncLoader';
 import Navbar from '../navbar/Navbar';
 import Order from './Order';
+import './Orders.css';
+
 
 
 const Orders = () => {
@@ -36,20 +38,26 @@ const Orders = () => {
                 })
 
         };
-    }, [loading, user,error])
+    }, [loading, user, error])
 
 
     const listOrders = () => {
 
         return (
-            <ul className="list-group">
-                {
-                    orders.map((order) => (
-                        <Order order={order} key={order.id} />
-                    ))
-                }
-            </ul>
-
+            <div className="orders-box d-flex flex-column align-items-center">
+                <div className="mt-3">
+                    <h5>Mis pedidos</h5>
+                </div>
+                <div className="d-flex mt-4">
+                    <ul className="list-group">
+                        {
+                            orders.map((order) => (
+                                <Order order={order} key={order.id} />
+                            ))
+                        }
+                    </ul>
+                </div>
+            </div>
 
         )
     }

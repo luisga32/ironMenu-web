@@ -38,9 +38,9 @@ const Order = () => {
     const orderDetail = getDetailProduct();
 
     return (
-        <div className='Order mt-3 pt-2 px-5 border rounded border-primary'>
+        <div className='Order mt-3 pt-2 px-5 border rounded'>
 
-            <h3 >Tu pedido</h3>
+            <h3>Mi pedido</h3>
             { order && (
                 <>
                     <div className="d-flex flex-row justify-content-between">
