@@ -14,7 +14,7 @@ const Home = () => {
             <main className="Main" style={{ backgroundImage: `url(${backgroundHome})` }}>
                 <div className="text" >
                     <h1>Ahorra tiempo durante tu semana de trabajo y olvidate de cocinar </h1>
-                    <p>Pide un menu de comida en pocos pasos. Elige entre todos los platos de nuestra carta la combinación que te guste y te lo llevamos a casa</p>
+                    <p className="parag-tx-color">Pide un menu de comida en pocos pasos. Elige entre todos los platos de nuestra carta la combinación que te guste y te lo llevamos a casa</p>
                     <Button classButton="btn-outline-color" href="/menus" text="Hacer pedido" />
 
                 </div>

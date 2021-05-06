@@ -54,7 +54,7 @@ const Product = ({ image, title, id }) => {
                 if (foundCourse) {
                     if (foundItem) {
                         return (
-                            <div className="d-flex justify-content-end p-2">
+                            <div className="d-flex justify-content-end">
                                 <button className="btn btn-outline-light" onClick={removeProduct}>
                                     <FontAwesomeIcon icon={faMinusCircle} size="1x" color="black" />
                                 </button>
@@ -64,7 +64,7 @@ const Product = ({ image, title, id }) => {
                     } else {
                         return (
                            
-                            <div className="d-flex justify-content-end p-2">
+                            <div className="d-flex justify-content-end">
                                 <button className="btn btn-outline-light disabled" onClick={addProduct}>
                                     <FontAwesomeIcon icon={faPlusCircle} size="1x" color="black" />
                                 </button>
@@ -74,7 +74,7 @@ const Product = ({ image, title, id }) => {
                 } else {
                         return (
                             
-                            <div className="d-flex justify-content-end p-2">
+                            <div className="d-flex justify-content-end">
                                 <button className="btn btn-outline-light" onClick={addProduct}>
                                     <FontAwesomeIcon icon={faPlusCircle} size="1x" color="black" />
                                 </button>
@@ -86,7 +86,7 @@ const Product = ({ image, title, id }) => {
         } else {
 
             return (
-                <div className="d-flex justify-content-end p-2">
+                <div className="d-flex justify-content-end">
                     <button className="btn btn-outline-light" onClick={addProduct}>
                         <FontAwesomeIcon icon={faPlusCircle} size="1x" color="black" />
                     </button>
@@ -97,11 +97,11 @@ const Product = ({ image, title, id }) => {
     }
 
     return (
-        <div className="card Product ms-5 mt-1">
+        <div className="card Product ms-5 mb-2">
             <Link className="text-decoration-none" to={`/menus/${id}`}>
                 <img src={image} className="card-img-top" alt={title} />
-                <div className="card-body">
-                    <h5 className="card-title">{title}</h5>
+                <div className="card-body d-flex-inline">
+                    <p className="card-title">{title}</p>
                 </div>
 
             </Link>

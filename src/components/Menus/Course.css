@@ -13,5 +13,11 @@
 
  .buttonCourseNotActive {
 
-   background-color:var( --second-bg-color) !important;
+   background-color:var(--second-bg-color) !important;
  }
+
+ .buttonOrderActive {
+  background-color: var(--second-bg-bt-color) !important;
+  color:var(--main-tx-bt-color) !important;
+
+}

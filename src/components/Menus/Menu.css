@@ -3,6 +3,11 @@
 }
 
 .Menu .tabs {
-    background-color:var( --second-bg-color) !important;
+    background-color:var(--second-bg-color) !important;
+
 
 }
+.w-full {
+    width: 100%;
+}
+

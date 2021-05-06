@@ -10,6 +10,12 @@ const Orders = () => {
 
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(true)
+    const [error, setError] = useState({
+        exist: false,
+        message: '',
+        field: ''
+    })
+
     const { user } = useUserContext();
 
     useEffect(() => {
@@ -19,32 +25,61 @@ const Orders = () => {
                     setOrders(listOrders)
                     setLoading(false)
                 })
-                .catch ( (e) => console.log ( ' error catch getOrderList: ' ,e ))
+                .catch((e) => {
+                    const { errors } = e.response.data;
+                    error.field = Object.keys(errors)
+                    error.message = errors[error.field];
+                    error.exist = true;
+                    setLoading(false)
+                    setError(error)
+
+                })
+
         };
-    }, [loading, user])
+    }, [loading, user,error])
+
+
+    const listOrders = () => {
+
+        return (
+            <ul className="list-group">
+                {
+                    orders.map((order) => (
+                        <Order order={order} key={order.id} />
+                    ))
+                }
+            </ul>
+
+
+        )
+    }
+
 
     return (
         <div className="Orders">
-            <Navbar/>
-            <ul className="list-group">
+            <Navbar />
+            {
+                loading
+                    ?
+                    (
+                        <div className="text-center">
+                            <SyncLoader color="blue" />
+                        </div>
 
-                {
-                loading 
-                ? 
-                (
-                    <div className="text-center">
-                        <SyncLoader color="blue" />
-                    </div>
+                    ) :
+                    <>
+                        {
+                            error.exist ?
+                                (
+                                    <h5>{error.message}</h5>
+                                )
+                                :
+                                listOrders()
+                        }
+                    </>
+            }
 
-                ) :
 
-                    orders.map((order) => (
-                        
-                            <Order order={order} key={order.id} />
-                        
-                    ))}
-
-            </ul>
         </div>
 
     )

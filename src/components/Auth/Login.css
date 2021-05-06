@@ -1,3 +1,12 @@
 .login-form {
-    max-width: 500px;
+    
+    margin: 0 auto;
+}
+
+.Login {
+        max-width: 500px;
+}
+
+.w-full {
+    max-width: 100%;
 }

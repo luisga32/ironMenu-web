@@ -3,21 +3,33 @@ import { Link } from 'react-router-dom';
 import Button from '../Misc/Button';
 import { useLocation } from 'react-router-dom';
 import { useUserContext } from '../../hooks/useUserContext';
+import { useCourseContext } from '../../hooks/useCourseContext';
 import LoggedButton from './LoggedButton';
 import './Navbar.css';
 
 
 
+
 const Navbar = () => {
   const { user } = useUserContext()
+  const { setCourse} =useCourseContext();
   let location = useLocation();
 
   const checkButtons = (() => {
     let home = false;
+    let login = false;
     let classButton=''
-    if (location.pathname === '/') {
+    if (location.pathname === '/' ) {
       home = true
+      setCourse('starter')
+
     }
+    if ( location.pathname === '/login'){
+      login = true
+      setCourse('starter')
+
+    }
+
     if (user) {
 
       return (
@@ -40,11 +52,14 @@ const Navbar = () => {
       }
       return (
         <div className="d-flex">
-          <li className="nav-item pe-3">
+          {
+            (!login) &&  <li className="nav-item pe-3">
             <Button classButton={classButton} href="/login" text="iniciar sesion" />
           </li>
+          }
+  
 
-          { home && (
+          { (home || login) && (
             <li className="nav-item pe-3">
               <Button classButton="btn-color" href="/menus" text="Ver carta" />
             </li>)}

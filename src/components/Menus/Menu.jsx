@@ -86,6 +86,7 @@ const Menu = () => {
   return (
     <div className="Menu">
       <Navbar />
+      <div className='d-flex'>
       <ul className="nav nav-tabs tabs" id="myTab" role="tablist">
 
         {COURSES.map(cors => {
@@ -98,7 +99,7 @@ const Menu = () => {
           )
         })}
         <li className="nav-item Course" role="presentation" >
-          <button className={`nav-link ${(user && confirmOrd) ? 'active buttonCourseActive' : 'buttonCourseNotActive'} `} data-bs-toggle="tab" data-bs-target='confirm'
+          <button className={`nav-link ${(user && confirmOrd) ? 'active buttonOrderActive' : 'buttonCourseNotActive'} `} data-bs-toggle="tab" data-bs-target='confirm'
             type="button" role="tab" disabled={!user || !confirmOrd}
             aria-controls='confirm' aria-selected="true" onClick={confirmOrder}>
             Confirmar Pedido
@@ -107,7 +108,7 @@ const Menu = () => {
         </li>
 
       </ul>
-       
+      </div>
       {
         (loading)
           ?

@@ -4,6 +4,7 @@
   --main-bg-color: rgba(242, 242, 242, 0.918);
   --second-bg-color: white;
   --active-bg-color: rgb(3, 208, 182);
+  --second-bg-bt-color: #f9a139;
 
  } 
 
@@ -62,6 +63,10 @@
 }
 .paragraph {
   margin-bottom: 0px;
+}
+
+.parag-tx-color {
+  color:var(--main-tx-bt-color);
 }
 
 .list-items {
