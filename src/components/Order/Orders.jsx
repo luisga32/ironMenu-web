@@ -79,7 +79,10 @@ const Orders = () => {
                         {
                             error.exist ?
                                 (
-                                    <h5>{error.message}</h5>
+                                    <div className="orders-box order-box-error d-flex justify-content-center mt-5">
+                                        <h5>{error.message}</h5>
+                                    </div>
+                                    
                                 )
                                 :
                                 listOrders()

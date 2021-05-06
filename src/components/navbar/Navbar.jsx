@@ -18,6 +18,7 @@ const Navbar = () => {
   const checkButtons = (() => {
     let home = false;
     let login = false;
+    let orders = false;
     let classButton=''
     if (location.pathname === '/' ) {
       home = true
@@ -30,6 +31,10 @@ const Navbar = () => {
 
     }
 
+   if (location.pathname === '/user/me/orders') {
+      orders = true
+   }
+
     if (user) {
 
       return (
@@ -38,7 +43,7 @@ const Navbar = () => {
             <LoggedButton name={user.name} />
           </li>
 
-          { home && (
+          { (home || orders) && (
             <li className="nav-item pe-3">
               <Button classButton="btn-color" href="/menus" text="Hacer pedido" />
             </li>)}
