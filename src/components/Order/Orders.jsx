@@ -19,6 +19,7 @@ const Orders = () => {
                     setOrders(listOrders)
                     setLoading(false)
                 })
+                .catch ( (e) => console.log ( ' error catch getOrderList: ' ,e ))
         };
     }, [loading, user])
 

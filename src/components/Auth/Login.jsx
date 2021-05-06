@@ -63,14 +63,15 @@ const Login = () => {
         e.preventDefault();
 
         if (isValid()) {
-     //       console.log(user.fields);
+            console.log('datos de usuario validos: ' , user.fields);
             login(user.fields)
             .then((response) => {
-       //         console.log(response)
+                console.log(' Respuesta login: ',  response)
                 setAccessToken(response.access_token);
                 doLogin().then(()=> history.push('/menus'))
                 
             })
+            .catch( (e) => {console.log('error: ' , e.message)} )
         }
     }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from '../navbar/Navbar';
 import Button from '../Misc/Button';
 import './Home.css';
-import './Main.css';
+
 import backgroundHome from '../../assets/images/backgroundHome.jpg';
 
 

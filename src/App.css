@@ -60,3 +60,21 @@
   background-color:var(--main-bg-bt-color);
   color:var(--main-tx-bt-color);
 }
+.paragraph {
+  margin-bottom: 0px;
+}
+
+.list-items {
+
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.list-items li {
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+}
+
+.total-order {
+  padding-top: 1rem;
+}

@@ -24,17 +24,17 @@ const OrderModal = ({ order, setShowModal }) => {
           <div className="modal-body">
             <p>Fecha de su pedido: {order.date}</p>
             <div className="d-flex flex-row justify-content-between">
-              <p> {order.typeMenu}</p>
-              <p>Precio: {order.price} €</p>
+              <p className='paragraph'> {order.typeMenu}</p>
+              <p className='paragraph'>Precio: {order.price} €</p>
               </div>
-              <ul>
-              {order.productsOrder.map((dish) => <li key={dish._id}>{dish.productId.title}</li> )
+              <ul className="list-unstyled py-3 list-items">
+              {order.productsOrder.map((dish) => <li key={dish._id}> {dish.quantity} x {dish.productId.title}</li> )
                 }
               </ul>
                 
           
             <div className="border-bottom border-1 border-dark" style={{ height: "1px", width: "100%" }}></div>
-            <div className="d-flex flex-row justify-content-between">
+            <div className="d-flex flex-row justify-content-between total-order">
               <p>Total:</p>
               <p>{order.price} €</p>
 
