@@ -71,10 +71,6 @@ const Menu = () => {
         setOrder(orderInit)
         history.push('/');
       })
-
-
-
-
   };
 
 
@@ -87,27 +83,29 @@ const Menu = () => {
     <div className="Menu">
       <Navbar />
       <div className='d-flex'>
-      <ul className="nav nav-tabs tabs" id="myTab" role="tablist">
+        <ul className="nav nav-tabs tabs" id="myTab" role="tablist">
 
-        {COURSES.map(cors => {
-          let active = false;
-          if (cors.name === course) {
-            active = true
-          }
-          return (
-            <Course course={cors} setCourse={setCourse} active={active} key={cors.name} />
-          )
-        })}
-        <li className="nav-item Course" role="presentation" >
-          <button className={`nav-link ${(user && confirmOrd) ? 'active buttonOrderActive' : 'buttonCourseNotActive'} `} data-bs-toggle="tab" data-bs-target='confirm'
-            type="button" role="tab" disabled={!user || !confirmOrd}
-            aria-controls='confirm' aria-selected="true" onClick={confirmOrder}>
-            Confirmar Pedido
+          {COURSES.map(cors => {
+            let active = false;
+            if (cors.name === course) {
+              active = true
+            }
+
+
+            return (
+              <Course course={cors} setCourse={setCourse} active={active} key={cors.name} />
+            )
+          })}
+          <li className="nav-item Course" role="presentation" >
+            <button className={`nav-link ${(user && confirmOrd) ? 'active buttonOrderActive' : 'buttonCourseNotActive'} `} data-bs-toggle="tab" data-bs-target='confirm'
+              type="button" role="tab" disabled={!user || !confirmOrd}
+              aria-controls='confirm' aria-selected="true" onClick={confirmOrder}>
+              Confirmar Pedido
   </button>
 
-        </li>
+          </li>
 
-      </ul>
+        </ul>
       </div>
       {
         (loading)
