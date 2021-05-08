@@ -2,6 +2,7 @@
 .Course button {
     width: 366px;
     border: solid 1px;
+    border-radius: 0;
     border-color: var(--main-bg-color) !important;
  }
 
@@ -9,7 +10,7 @@
 
    background-color:var(--active-bg-color) !important;
    color:var(--main-tx-bt-color) !important;
- }
+   }
 
  .buttonCourseNotActive {
 
@@ -19,5 +20,11 @@
  .buttonOrderActive {
   background-color: var(--second-bg-bt-color) !important;
   color:var(--main-tx-bt-color) !important;
+
+}
+
+.Course .nav-link {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 
 }
