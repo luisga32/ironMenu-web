@@ -111,7 +111,9 @@ const Menu = () => {
               typeMenu.map((type) => {
                 return (
                 
-                <BtnOrder type={type} className="list-group-item align-items-center border rounded list-group-item-action" newOrder={initNewOrder} />
+                <BtnOrder type={type} 
+                className={`list-group-item align-items-center border rounded list-group-item-action ${type.key === order.typeMenu && ('active')} `} 
+                newOrder={initNewOrder} />
               )})
             }
         </div>
