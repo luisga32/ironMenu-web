@@ -1,6 +1,7 @@
  .App {
   --main-bg-bt-color: rgb(3, 208, 182);
   --main-tx-bt-color:white; 
+  --second-tx-color: rgb(3, 208, 182);
   --main-bg-color: rgba(242, 242, 242, 0.918);
   --second-bg-color: white;
   --active-bg-color: rgb(3, 208, 182);
