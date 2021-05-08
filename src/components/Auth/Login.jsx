@@ -168,7 +168,7 @@ const Login = () => {
                     }
                 </div>
 
-                <button className="btn btn-color w-full mt-3" type="submit" disabled={!isValid()}>
+                <button className="btn btn-color w-mx-full mt-3" type="submit" disabled={!isValid()}>
                     Iniciar Sesión
                     </button>
 
