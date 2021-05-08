@@ -1,6 +1,6 @@
 
 .Course button {
-    width: 366px;
+    width: 100%;
     border: solid 1px;
     border-radius: 0;
     border-color: var(--main-bg-color) !important;

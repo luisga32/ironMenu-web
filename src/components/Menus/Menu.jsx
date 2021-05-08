@@ -97,6 +97,13 @@ const Menu = () => {
   
   let confirmOrd = false;
   const { maxCourses } = typeMenu.find ( type => type.key === order.typeMenu)
+  
+  let widthCourse = 'w-full-menu'
+
+  if (maxCourses < 4) {
+    widthCourse = 'w-half-menu'
+
+  }
   if (order && order.orderItems.length === maxCourses) {
     confirmOrd = true
   }
@@ -106,7 +113,7 @@ const Menu = () => {
     <div className="Menu">
       <Navbar />
       <div className='d-flex flex-column'>
-        <div className="list-group flex-row py-3 px-5 tabs">
+        <div className="list-group flex-row py-3 px-5 tabs w-full">
             {
               typeMenu.map((type) => {
                 return (
@@ -117,8 +124,8 @@ const Menu = () => {
               )})
             }
         </div>
-        <div className='flex-row'>
-          <ul className="nav nav-tabs tabs" id="TabCourses" role="tablist">
+        <div className='flex-row w-full'>
+          <ul className="nav nav-tabs tabs w-full" id="TabCourses" role="tablist">
 
             {coursesTypeMenu.map(cors => {
               let active = false;
@@ -126,10 +133,10 @@ const Menu = () => {
                 active = true
               }
               return (
-                <Course course={cors} setCourse={setCourse} active={active} key={cors.name} />
+                <Course course={cors} setCourse={setCourse} active={active} key={cors.name} width={widthCourse}/>
               )
             })}
-            <li className="nav-item Course" role="presentation" >
+            <li className={`nav-item Course ${widthCourse}`} role="presentation" >
               <button className={`${(user && confirmOrd) ? 'active buttonOrderActive' : 'buttonCourseNotActive'} nav-link `} data-bs-toggle="tab" data-bs-target='confirm'
                 type="button" role="tab" disabled={!user || !confirmOrd}
                 aria-controls='confirm' aria-selected="true" onClick={confirmOrder}>

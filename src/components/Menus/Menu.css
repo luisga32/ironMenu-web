@@ -10,4 +10,12 @@
 .w-full {
     width: 100%;
 }
+.w-half-menu {
+
+    width: 25%;
+}
+
+.w-full-menu {
+    width: 20%;
+}
 
