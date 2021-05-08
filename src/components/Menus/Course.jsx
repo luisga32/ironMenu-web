@@ -14,12 +14,9 @@ const Course = ({ course, setCourse, active }) => {
     let courseDescription = description;
     if (order.orderItems.length > 0) {
         const itemDescription = order.orderItems.find((item) => {
-            console.log('item find: ', item.course)
-            console.log('cors name: ', name)
             return item.course === name
         })
         if (itemDescription) {
-            console.log('course description: ', itemDescription.title)
             courseDescription = itemDescription.title
         }
     }

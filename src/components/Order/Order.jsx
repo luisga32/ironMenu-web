@@ -10,9 +10,7 @@ const Order = ({ order }) => {
 
     const [orderDetail, setOrderDetail] = useState(order)
     const [showModal, setShowModal] = useState(false)
-    console.log(showModal)
     useEffect(() => {
-        console.log('ORDER Effect id:', order.id)
         const date = getDate(order.createdAt)
         let typeOrderMenu = '';
         typeMenu.forEach((type) => {
@@ -50,10 +48,7 @@ const Order = ({ order }) => {
                 </div>
             </li>
             {showModal && <OrderModal order={orderDetail} setShowModal={setShowModal}/>}
-            {/* <Switch>
-            <Route exact path='/user/me/orders/:id' component={OrderDetail}></Route>
-        </Switch>*/}
-
+ 
         </div>
 
 

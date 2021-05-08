@@ -12,23 +12,28 @@ import { useOrderContext } from '../../hooks/useOrderContext';
 import { typeMenu } from '../../constants/constans';
 import { useHistory } from 'react-router';
 import './Menu.css';
+import BtnOrder from '../Misc/BtnOrder';
 
 const COURSES = [
   {
     name: 'starter',
-    description: 'Entrante'
+    description: 'Entrante',
+    typeMenu : ['full','menu']
   },
   {
     name: 'main',
-    description: 'Principal'
+    description: 'Principal',
+    typeMenu : ['full','half','menu']
   },
   {
     name: 'dessert',
-    description: 'Postre'
+    description: 'Postre',
+    typeMenu : ['full','half','menu']
   },
   {
     name: 'extra',
-    description: 'Extra'
+    description: 'Extra',
+    typeMenu : ['full','half','menu']
   }
 ];
 const Menu = () => {
@@ -39,7 +44,7 @@ const Menu = () => {
   // state for list of products
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
-  const { order, setOrder, orderInit } = useOrderContext();
+  const { order, setOrder, orderInit , newOrder } = useOrderContext();
 
   useEffect(() => {
     getProductsList(course)
@@ -48,6 +53,22 @@ const Menu = () => {
         setLoading(false)
       })
   }, [course])
+
+  
+  const initCoursesTypeMenu = (type) =>{
+    return  COURSES.filter( (course) => course.typeMenu.includes(type))
+
+  }
+
+
+  const initNewOrder = (type) => {
+    newOrder(type)
+    const coursesTypeMenu = initCoursesTypeMenu(type)
+    const {name }= coursesTypeMenu[0]
+      setCourse(name);
+
+
+  }
 
   const confirmOrder = () => {
     let orderDetail = {}
@@ -73,39 +94,54 @@ const Menu = () => {
       })
   };
 
-
+  
   let confirmOrd = false;
-  if (order && order.orderItems.length === 4) {
+  const { maxCourses } = typeMenu.find ( type => type.key === order.typeMenu)
+  if (order && order.orderItems.length === maxCourses) {
     confirmOrd = true
   }
+  const coursesTypeMenu = initCoursesTypeMenu(order.typeMenu);
 
   return (
     <div className="Menu">
       <Navbar />
-      <div className='d-flex'>
-        <ul className="nav nav-tabs tabs" id="myTab" role="tablist">
-
-          {COURSES.map(cors => {
-            let active = false;
-            if (cors.name === course) {
-              active = true
+      <div className='d-flex flex-column'>
+        <div className="list-group flex-row py-3 px-5 tabs">
+            {
+              typeMenu.map((type) => {
+                return (
+                
+                <BtnOrder type={type} className="list-group-item align-items-center border rounded list-group-item-action" newOrder={initNewOrder} />
+              )})
             }
+        </div>
+        <div className='d-flex'>
+          <ul className="nav nav-tabs tabs" id="TabCourses" role="tablist">
+
+            {coursesTypeMenu.map(cors => {
+              let active = false;
+              if (cors.name === course) {
+                active = true
+              }
+              return (
+                <Course course={cors} setCourse={setCourse} active={active} key={cors.name} />
+              )
+            })}
+            <li className="nav-item Course" role="presentation" >
+              <button className={`nav-link ${(user && confirmOrd) ? 'active buttonOrderActive' : 'buttonCourseNotActive'} `} data-bs-toggle="tab" data-bs-target='confirm'
+                type="button" role="tab" disabled={!user || !confirmOrd}
+                aria-controls='confirm' aria-selected="true" onClick={confirmOrder}>
+                Confirmar Pedido
+            </button>
+
+            </li>
+
+          </ul>
 
 
-            return (
-              <Course course={cors} setCourse={setCourse} active={active} key={cors.name} />
-            )
-          })}
-          <li className="nav-item Course" role="presentation" >
-            <button className={`nav-link ${(user && confirmOrd) ? 'active buttonOrderActive' : 'buttonCourseNotActive'} `} data-bs-toggle="tab" data-bs-target='confirm'
-              type="button" role="tab" disabled={!user || !confirmOrd}
-              aria-controls='confirm' aria-selected="true" onClick={confirmOrder}>
-              Confirmar Pedido
-  </button>
+        </div>
 
-          </li>
 
-        </ul>
       </div>
       {
         (loading)
