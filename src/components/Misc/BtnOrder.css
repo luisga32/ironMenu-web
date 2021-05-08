@@ -1,0 +1,13 @@
+.BtnOrder {
+
+    width: 15rem;
+    margin-right: 1rem;
+    background-color:var(--main-bg-color);
+
+
+}
+
+.BtnOrder.active {
+    background-color:var(--main-bg-bt-color);
+    color:var(--main-tx-bt-color);
+}

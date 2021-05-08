@@ -18,11 +18,18 @@ export function OrderContextProvider ({children}){
 
       // },[order])
 
-     
-
+    const newOrder = ((type) => {
+      setOrder (() => (
+        {
+          orderItems: [],
+          typeMenu: type
+        }
+      ))
+    });
     const value = { 
         order ,
         setOrder,
+        newOrder,
         orderInit
     }
    

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import Button from '../Misc/Button';
 import { useLocation } from 'react-router-dom';
 import { useUserContext } from '../../hooks/useUserContext';
-import { useCourseContext } from '../../hooks/useCourseContext';
 import LoggedButton from './LoggedButton';
 import './Navbar.css';
 
@@ -12,7 +11,6 @@ import './Navbar.css';
 
 const Navbar = () => {
   const { user } = useUserContext()
-  const { setCourse} =useCourseContext();
   let location = useLocation();
 
   const checkButtons = (() => {
@@ -22,12 +20,12 @@ const Navbar = () => {
     let classButton=''
     if (location.pathname === '/' ) {
       home = true
-      setCourse('starter')
+  //    setCourse('starter')
 
     }
     if ( location.pathname === '/login'){
       login = true
-      setCourse('starter')
+ //     setCourse('starter')
 
     }
 

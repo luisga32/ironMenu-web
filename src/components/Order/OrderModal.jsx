@@ -4,14 +4,6 @@ import './OrderModal.css'
 
 const OrderModal = ({ order, setShowModal }) => {
 
-
-  order.productsOrder.map ( ( dish) => console.log('Order Modal :' , dish.productId.title))
-
-  
-
-
-
-  
   return (
     <div className="OrderModal" >
 
