@@ -111,11 +111,13 @@ const Menu = () => {
               typeMenu.map((type) => {
                 return (
                 
-                <BtnOrder type={type} className="list-group-item align-items-center border rounded list-group-item-action" newOrder={initNewOrder} />
+                <BtnOrder type={type} 
+                className={`list-group-item align-items-center border rounded list-group-item-action ${type.key === order.typeMenu && ('active')} `} 
+                newOrder={initNewOrder} />
               )})
             }
         </div>
-        <div className='d-flex'>
+        <div className='flex-row'>
           <ul className="nav nav-tabs tabs" id="TabCourses" role="tablist">
 
             {coursesTypeMenu.map(cors => {
@@ -128,7 +130,7 @@ const Menu = () => {
               )
             })}
             <li className="nav-item Course" role="presentation" >
-              <button className={`nav-link ${(user && confirmOrd) ? 'active buttonOrderActive' : 'buttonCourseNotActive'} `} data-bs-toggle="tab" data-bs-target='confirm'
+              <button className={`${(user && confirmOrd) ? 'active buttonOrderActive' : 'buttonCourseNotActive'} nav-link `} data-bs-toggle="tab" data-bs-target='confirm'
                 type="button" role="tab" disabled={!user || !confirmOrd}
                 aria-controls='confirm' aria-selected="true" onClick={confirmOrder}>
                 Confirmar Pedido

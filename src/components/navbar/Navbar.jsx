@@ -77,7 +77,9 @@ const Navbar = () => {
     <header className="Navbar">
       <nav className="navbar navbar-expand-lg navbar-light">
         <div className="container-fluid px-5">
-          <Link className="navbar-brand fs-1 fw-bolder" to="/" >ironMenu</Link>
+          <Link className="navbar-brand" to="/" >
+            <h1 className="fs-1 fw-bolder">ironMenu</h1>
+            </Link>
           <div className="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
             <ul className="navbar-nav nav-pills">
 

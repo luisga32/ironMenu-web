@@ -1,3 +1,7 @@
 .Navbar {
     background-color:var(--second-bg-color);
 }
+
+.Navbar h1 {
+    color:var(--second-tx-color);
+}
